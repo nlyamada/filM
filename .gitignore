@@ -1,0 +1,10 @@
+# build output
+bin/
+obj/
+dist/
+
+# local settings created next to a locally-run exe
+/keymap.json
+/favorites.json
+/session.json
+/settings.json

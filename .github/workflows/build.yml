@@ -1,0 +1,26 @@
+# Windows 上で MSYS2 (MinGW-w64) を使ってビルドとテストをする。(未検証: GitHub に上げて最初に動かしたときに確認する)
+name: build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          install: mingw-w64-x86_64-gcc mingw-w64-x86_64-make
+      - name: Test
+        run: mingw32-make test
+      - name: Build
+        run: mingw32-make
+      - uses: actions/upload-artifact@v4
+        with:
+          name: filM
+          path: |
+            bin/filM.exe
+            bin/WebView2Loader.dll
+            bin/viewer

@@ -1,0 +1,35 @@
+#include <winuser.h>
+#include <winver.h>
+
+// アプリのアイコン (エクスプローラー・タスクバー・タイトルバー)。差し替えるときは res\filM.ico を置き換える。
+1 ICON "filM.ico"
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "app.manifest"
+
+// ファイルのプロパティ (詳細) に出る情報。
+1 VERSIONINFO
+FILEVERSION 0,4,0,0
+PRODUCTVERSION 0,4,0,0
+FILEFLAGSMASK 0x3fL
+FILEFLAGS 0x0L
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_APP
+FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041104b0"
+        BEGIN
+            VALUE "FileDescription", "filM - keyboard-driven file manager\0"
+            VALUE "FileVersion", "0.4.0.0\0"
+            VALUE "InternalName", "filM\0"
+            VALUE "OriginalFilename", "filM.exe\0"
+            VALUE "ProductName", "filM\0"
+            VALUE "ProductVersion", "0.4.0.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0411, 1200
+    END
+END
